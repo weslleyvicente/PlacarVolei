@@ -1,0 +1,97 @@
+ body {
+      font-family: 'Anton', sans-serif;
+      background: #0873a7;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+ h1 {
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 10px;
+ }
+ .logo {
+  width: 120px;
+  margin: 20px auto;
+  display: block;
+  opacity: 0.8;
+}
+
+ input {
+  padding: 8px 12px;
+    margin: 10px 5px;
+    border-radius: 30px;
+    border: 2px solid #ccc;
+    font-size: 1em;
+ }
+ button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;  
+    transition: background-color 0.2s ease;
+ }
+  button:hover {
+    background-color: #004d40;
+  }
+  #tempo {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: antiquewhite;
+  }
+    .placar {
+     display: flex;
+     justify-content: center;
+     gap: 30px;
+     flex-wrap: wrap;
+     margin-top: 20px;
+     color: #00796b;
+    }
+    .equipe {
+       background-color: rgba(255, 138, 101, 0.95);
+       border: 3px solid white;
+       border-radius: 20px;
+       padding: 20px;
+       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+       transition: transform 0.2s ease;
+    }
+    .equipe:hover {
+      transform: scale(1.02);
+    }
+    h2 {
+     color: #00695c;
+     font-size: 1.5em;
+     margin-bottom: 10px;
+    }
+    .pontuacao, .faltas {
+     font-size: 1.5em;
+     margin: 10px 0;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 1em;
+    }
+    #tempo {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    input {
+      font-size: 1em;
+      padding: 5px;
+      margin-top: 10px;
+    }
+     .equipe {
+      width: 48%;
+     }
+     .container-equipes {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+     }

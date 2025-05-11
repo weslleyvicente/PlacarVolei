@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Vôlei Placar Doido</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://imagepng.org/bola-de-voleibol/bola-de-voleibol-1/" type="image/x-icon">
+</head>
+<body>
+  <h1>Placar de Vôlei</h1>
+  <img src="https://imagepng.org/bola-de-voleibol/bola-de-voleibol-1/" class="logo">
+  <div>
+    <input id="nomeEquipeA" placeholder="Nome da 1ª Equipe" value="Equipe A">
+    <input id="nomeEquipeB" placeholder="Nome da 2ª Equipe" value="Equipe B">
+    <button onclick="atualizarNomes()">Salvar Equipes</button>
+  </div>
+  <div id="tempo">00:00</div>
+  <button onclick="iniciarTempo()">Iniciar</button>
+  <button onclick="pausarTempo()">Pausar</button>
+  <button onclick="reiniciarTempo()">Reiniciar</button>
+
+  <div class="placar">
+    <div class="equipe" id="equipeA">
+      <h2>Equipe A</h2>
+      <div class="pontuacao">Pontos: <span id="pontosA">0</span></div>
+      <div class="faltas">Faltas: <span id="faltasA">0</span></div>
+      <button onclick="alterarPontos('A', 1)">+1 Ponto 🏐</button>
+      <button onclick="alterarFaltas('A', 1)">+1 Falta ❌</button>
+      <button onclick="removerPonto('A')">−1 Ponto 👎</button>
+
+    </div>
+
+    <div class="equipe" id="equipeB">
+      <h2>Equipe B</h2>
+      <div class="pontuacao">Pontos: <span id="pontosB">0</span></div>
+      <div class="faltas">Faltas: <span id="faltasB">0</span></div>
+      <button onclick="alterarPontos('B', 1)">+1 Ponto 🏐</button>
+      <button onclick="alterarFaltas('B', 1)">+1 Falta ❌</button>
+      <button onclick="removerPonto('B')">−1 Ponto 👎</button>
+    </div>
+
+  </div>
+
+  <script>
+    let tempo = 0;
+    let cronometro = null;
+
+    function atualizarTempo() {
+      const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
+      const segundos = String(tempo % 60).padStart(2, '0');
+      document.getElementById("tempo").innerText = `${minutos}:${segundos}`;
+    }
+
+    function iniciarTempo() {
+      if (cronometro) return;
+      cronometro = setInterval(() => {
+        tempo++;
+        atualizarTempo();
+      }, 1000);
+    }
+
+    function pausarTempo() {
+      clearInterval(cronometro);
+      cronometro = null;
+    }
+
+    function reiniciarTempo() {
+      pausarTempo();
+      tempo = 0;
+      atualizarTempo();
+    }
+
+    let pontos = { A: 0, B: 0 };
+    let faltas = { A: 0, B: 0 };
+
+    function alterarPontos(equipe, valor) {
+      pontos[equipe] += valor;
+      if (pontos[equipe] < 0) {
+        pontos[equipe] = 0; 
+      }
+      document.getElementById(`pontos${equipe}`).innerText = pontos[equipe];
+    }
+    function removerPonto(equipe) {
+      pontos[equipe] -= 1;
+      if (pontos[equipe] < 0) {
+        pontos[equipe] = 0; // Garantir que os pontos não fiquem negativos
+      }
+      document.getElementById(`pontos${equipe}`).innerText = pontos[equipe];
+    }
+    function alterarFaltas(equipe, valor) {
+      faltas[equipe] += valor;
+      document.getElementById(`faltas${equipe}`).innerText = faltas[equipe];
+    }
+
+    function atualizarNomes() {
+      const nomeA = document.getElementById("nomeEquipeA").value;
+      const nomeB = document.getElementById("nomeEquipeB").value;
+      document.querySelector("#equipeA h2").innerText = nomeA;
+      document.querySelector("#equipeB h2").innerText = nomeB;
+    }
+    atualizarTempo();
+  </script>
+</body>
+</html>
