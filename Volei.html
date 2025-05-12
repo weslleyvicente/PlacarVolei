@@ -99,6 +99,13 @@
       document.querySelector("#equipeB h2").innerText = nomeB;
     }
     atualizarTempo();
+    function removerFalta(equipe) {
+      faltas[equipe] -= 1;
+      if (faltas[equipe] < 0) {
+        faltas[equipe] = 0;
+      }
+      document.getElementById(`faltas${equipe}`).innerText = faltas[equipe];
+    }
   </script>
 </body>
 </html>
