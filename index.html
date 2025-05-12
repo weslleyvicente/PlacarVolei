@@ -85,7 +85,7 @@
     function removerPonto(equipe) {
       pontos[equipe] -= 1;
       if (pontos[equipe] < 0) {
-        pontos[equipe] = 0; // Garantir que os pontos não fiquem negativos
+        pontos[equipe] = 0;
       }
       document.getElementById(`pontos${equipe}`).innerText = pontos[equipe];
     }
@@ -101,7 +101,7 @@
       document.querySelector("#equipeB h2").innerText = nomeB;
     }
     atualizarTempo();
-    function removerFalta(equipe) {
+        function removerFalta(equipe) {
       faltas[equipe] -= 1;
       if (faltas[equipe] < 0) {
         faltas[equipe] = 0;
